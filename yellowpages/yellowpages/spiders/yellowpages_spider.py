@@ -36,4 +36,9 @@ class YellowpagesSpider(Spider):
         EVENT_LINK_XPATH = '//section[@class="regular"]//div[@class="result-img"]/a/@href'
 
         events = sel.xpath(EVENT_LINK_XPATH).extract()
-        
+        if events:
+            for event_link in events:
+                event_link = event_link if event_link.startswith('http') else self.BASE_URL+event_link
+                
+        else:
+            return
