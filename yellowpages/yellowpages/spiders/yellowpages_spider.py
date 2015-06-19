@@ -20,4 +20,8 @@ import json
 
 class YellowpagesSpider(Spider):
     name = 'yellowpages'
+    start_urls = ['http://www.yellow-pages.ph', ]
+    allowed_domains = ['yellow-pages.ph']
+    TIMEZONE = ''
+    BASE_URL = 'http://www.yellow-pages.ph'
     
