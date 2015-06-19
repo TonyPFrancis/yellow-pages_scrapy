@@ -73,3 +73,5 @@ class YellowpagesSpider(Spider):
         city = city[0].strip() if city else ''
         zip = re.findall(r'(\d+)$', address, re.I)
         zip = zip[0].strip() if zip else ''
+        phone = sel.xpath(PHONE_XPATH).extract()
+        phone = ', '.join([x.strip() for x in phone if x.strip()]) if phone else ''
