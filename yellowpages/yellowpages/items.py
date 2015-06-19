@@ -17,3 +17,4 @@ class YellowpagesItem(Item):
     city = Field()
     zip = Field()
     phone = Field()
+    url = Field()
