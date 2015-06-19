@@ -46,6 +46,8 @@ class YellowpagesSpider(Spider):
         NEXT_XPATH = '//a[text()="Next"]/@href'
         next_page = sel.xpath(NEXT_XPATH).extract()
         next_page = [next_page[0] if next_page[0].startswith('http') else self.BASE_URL+next_page[0]] if next_page else ''
+        if next_page:
+            yield Request(url = next_page, callback=self.parse)
 
     def parse_events(self, response):
         item = YellowpagesItem(url = response.url)
