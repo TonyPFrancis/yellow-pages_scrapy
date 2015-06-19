@@ -83,6 +83,12 @@ class YellowpagesSpider(Spider):
                                zip = zip,
                                phone = phone)
         try:
+            self.check_item(item)
+            yield item
+        except Exception as e:
+            print "*** ITEM DROPPED %s"%(str(e))
+            with open('dropped.txt', 'a+') as d:
+                d.write(url+'\t-\t'+str(e)+'\n')
 
 
     def check_item(self, item):
