@@ -82,4 +82,19 @@ class YellowpagesSpider(Spider):
                                city = city,
                                zip = zip,
                                phone = phone)
-        
+        try:
+
+
+    def check_item(self, item):
+        if not item['business_name1']:
+            raise AssertionError('No business_name1')
+        if not item['business_name2']:
+            raise AssertionError('No business_name2')
+        if not item['address']:
+            raise AssertionError('No address')
+        if not item['city']:
+            raise AssertionError('No city')
+        if not item['zip']:
+            raise AssertionError('No zip')
+        if not item['phone']:
+            raise AssertionError('No phone')
