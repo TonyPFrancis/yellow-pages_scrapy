@@ -43,6 +43,8 @@ class YellowpagesSpider(Spider):
         else:
             return
 
+        NEXT_XPATH = '//a[text()="Next"]/@href'
+
     def parse_events(self, response):
         item = YellowpagesItem(url = response.url)
         yield item
