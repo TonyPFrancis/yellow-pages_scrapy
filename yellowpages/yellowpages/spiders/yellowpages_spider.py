@@ -65,3 +65,5 @@ class YellowpagesSpider(Spider):
         business_name1 = business_name1[0].strip() if business_name1 else ''
         business_name2 = sel.xpath(BUSINESS_NAME2_XPATH).extract()
         business_name2 = business_name2[0].strip().strip('(').strip(')') if business_name2 else ''
+        address = sel.xpath(ADDRESS_XPATH).extract()
+        address = address[0].strip() if address else ''
