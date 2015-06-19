@@ -15,3 +15,5 @@ NEWSPIDER_MODULE = 'yellowpages.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'yellowpages (+http://www.yourdomain.com)'
+
+AUTOTHROTTLE_ENABLED = True
