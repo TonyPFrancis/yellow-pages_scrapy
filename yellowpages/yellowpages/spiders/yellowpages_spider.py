@@ -39,7 +39,7 @@ class YellowpagesSpider(Spider):
         if events:
             for event_link in events:
                 event_link = event_link if event_link.startswith('http') else self.BASE_URL+event_link
-                yield Request(url = event_link, dont_filter=True, callback=self.parse_events)
+                yield Request(url = event_link, dont_filter=True, callback=self.parse_event)
         else:
             return
 
@@ -52,3 +52,9 @@ class YellowpagesSpider(Spider):
     def parse_events(self, response):
         item = YellowpagesItem(url = response.url)
         yield item
+
+    def parse_event(self, response):
+        sel = Selector(response)
+        url = response.url
+
+        BUSINESS_NAME1_XPATH = '//h1[@itemprop="name"]/text()'
