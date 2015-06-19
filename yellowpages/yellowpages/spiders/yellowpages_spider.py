@@ -39,6 +39,10 @@ class YellowpagesSpider(Spider):
         if events:
             for event_link in events:
                 event_link = event_link if event_link.startswith('http') else self.BASE_URL+event_link
-                
+                yield Request(url = event_link, dont_filter=True, callback=self.parse_events)
         else:
             return
+
+    def parse_events(self, response):
+        item = YellowpagesItem(url = response.url)
+        yield item
