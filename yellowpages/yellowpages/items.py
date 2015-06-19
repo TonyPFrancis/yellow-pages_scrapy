@@ -5,10 +5,15 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/items.html
 
-import scrapy
+from scrapy.item import Field, Item
 
 
-class YellowpagesItem(scrapy.Item):
+class YellowpagesItem(Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    business_name1 = Field()
+    business_name2 = Field()
+    address = Field()
+    city = Field()
+    zip = Field()
+    phone = Field()
