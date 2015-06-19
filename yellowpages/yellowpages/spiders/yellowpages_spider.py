@@ -20,8 +20,19 @@ import json
 
 class YellowpagesSpider(Spider):
     name = 'yellowpages'
-    start_urls = ['http://www.yellow-pages.ph', ]
+    start_urls = ['http://www.yellow-pages.ph/search/schools/cebu/page-1', ]
     allowed_domains = ['yellow-pages.ph']
     TIMEZONE = ''
     BASE_URL = 'http://www.yellow-pages.ph'
-    
+
+    def __init__(self, name=None, **kwargs):
+        ScrapyFileLogObserver(open("spider.log", 'w'), level=log.INFO).start()
+        ScrapyFileLogObserver(open("spider_error.log", 'w'), level=log.ERROR).start()
+        super(YellowpagesSpider, self).__init__(name, **kwargs)
+
+    def parse(self, response):
+        sel = Selector(response)
+
+        EVENT_LINK_XPATH = '//section[@class="regular"]//div[@class="result-img"]/a/@href'
+
+        
