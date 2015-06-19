@@ -59,6 +59,7 @@ class YellowpagesSpider(Spider):
 
         BUSINESS_NAME1_XPATH = '//h1[@itemprop="name"]/text()'
         BUSINESS_NAME2_XPATH = '//h2[@itemprop="alternateName"]/text()'
+        ADDRESS_XPATH = '//h3[@itemprop="address"]/text()'
 
         business_name1 = sel.xpath(BUSINESS_NAME1_XPATH).extract()
         business_name1 = business_name1[0].strip() if business_name1 else ''
