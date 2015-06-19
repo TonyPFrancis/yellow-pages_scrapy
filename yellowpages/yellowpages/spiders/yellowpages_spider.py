@@ -75,3 +75,11 @@ class YellowpagesSpider(Spider):
         zip = zip[0].strip() if zip else ''
         phone = sel.xpath(PHONE_XPATH).extract()
         phone = ', '.join([x.strip() for x in phone if x.strip()]) if phone else ''
+
+        item = YellowpagesItem(business_name1 = business_name1,
+                               business_name2 = business_name2,
+                               address = address,
+                               city = city,
+                               zip = zip,
+                               phone = phone)
+        
